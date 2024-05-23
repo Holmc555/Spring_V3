@@ -1,20 +1,26 @@
 package com.example.todolist;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Note {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
     private String content;
 
-    // Конструктори
+
     public Note() {}
 
-    public Note(Long id, String title, String content) {
-        this.id = id;
+    public Note(String title, String content) {
         this.title = title;
         this.content = content;
     }
 
-    // Геттери та сеттери
     public Long getId() {
         return id;
     }
@@ -38,14 +44,5 @@ public class Note {
     public void setContent(String content) {
         this.content = content;
     }
-
-    // Метод toString (не обов'язковий, але корисний для відладки)
-    @Override
-    public String toString() {
-        return "Note{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                '}';
-    }
 }
+
